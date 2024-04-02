@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\DashboardController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,19 +19,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
+// Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
-Route::get('/notes/create', [NoteController::class, 'create'])->name('notes.create');
-Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
-Route::get('/notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit');
-Route::put('/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
-Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
-Route::get('/notes/share/{shareable_link}', [NoteController::class, 'showShareableNote'])->name('notes.showShareable');
-
+Route::get('/dashboard/notes', [NoteController::class, 'index'])->name('notes.index');
+Route::get('/dashboard/notes/create', [NoteController::class, 'create'])->name('notes.create');
+Route::post('/dashboard/notes', [NoteController::class, 'store'])->name('notes.store');
+Route::get('/dashboard/notes/{note}', [NoteController::class, 'show'])->name('notes.show');
+Route::get('/dashboard/notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit');
+Route::put('/dashboard/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
+Route::delete('/dashboard/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
+Route::put('/notes/{id}/update-status', [NoteController::class, 'updateStatus'])->name('notes.updateStatus');
 
 
 

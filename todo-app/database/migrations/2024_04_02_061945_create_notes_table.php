@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description');
-            $table->string('shared_link')->nullable();
+            $table->timestamp('date_created')->useCurrent();
+            $table->boolean('completed')->default(false);
+            $table->string('shareable_link')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,5 +30,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('notes');
     }
-    
 };

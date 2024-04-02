@@ -1,4 +1,3 @@
-<!-- create.blade.php -->
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -14,22 +13,17 @@
                         @csrf
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6">
-                                <label for="title" class="block font-medium text-sm text-gray-700">Title</label>
-                                <input id="title" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="title" :value="old('title')" required autofocus />
+                                <label for="title" class="block font-medium text-sm text-gray-700" style="color:white">Title</label>
+                                <input id="title" type="text" name="title" class="form-input rounded-md shadow-sm mt-1 block w-full" required />
                             </div>
 
                             <div class="col-span-6">
-                                <label for="description" class="block font-medium text-sm text-gray-700">Description</label>
-                                <textarea id="description" class="form-textarea mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" rows="3" name="description" required>{{ old('description') }}</textarea>
+                                <label for="description" class="block font-medium text-sm text-gray-700" style="color:white">Description</label>
+                                <textarea id="description" name="description" class="form-textarea rounded-md shadow-sm mt-1 block w-full" rows="3" required></textarea>
                             </div>
-                            <!-- <div class="form-group">
-    <label for="shareable_link">Shareable Link</label>
-    <input type="text" class="form-control" id="shareable_link" name="shareable_link" value="{{ $note->shareable_link ?? '' }}">
-</div> -->
-
 
                             <div class="col-span-6 flex justify-end">
-                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 disabled:opacity-25 transition">{{ __('Create') }}</button>
+                                <button type="submit" class="btn btn-primary" style="color:white; background-color:blue; border-radius:10%; text-size:20px">Create</button>
                             </div>
                         </div>
                     </form>
@@ -38,4 +32,3 @@
         </div>
     </div>
 </x-app-layout>
-
