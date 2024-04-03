@@ -7,7 +7,6 @@ This is a simple Todo application built with PHP Laravel framework. It allows us
 - User authentication: Register, login, and logout functionality.
 - Create, read, update, and delete (CRUD) operations for notes/tasks.
 - Mark tasks as completed.
-- Share notes/tasks with other users via a shareable link.
 - User-friendly interface.
 
 ## Getting Started
