@@ -28,7 +28,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 Route::get('/dashboard/notes', [NoteController::class, 'index'])->name('notes.index');
 Route::get('/dashboard/notes/create', [NoteController::class, 'create'])->name('notes.create');
 Route::post('/dashboard/notes', [NoteController::class, 'store'])->name('notes.store');
-Route::get('/dashboard/notes/{note}', [NoteController::class, 'show'])->name('notes.show');
+Route::get('/notes/{note}', [NoteController::class, 'show'])->name('notes.show');
 Route::get('/dashboard/notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit');
 Route::put('/dashboard/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
 Route::delete('/dashboard/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
